@@ -355,7 +355,12 @@ var yAxis = d3.svg.axis()
     </section>
 
     <section>
-        <h3>Wrapping D3 in Backbone</h3>
+        <h2>Let's wrap D3 in Backbone</h2>
+        <img src="img/bacon-asparagus.jpg">
+    </section>
+
+    <section>
+        <h3>Dimensions and margin convention</h3>
         <div class="col2">
             <pre><code data-trim>
 var margin = {top: 20, right: 20, bottom: 30, left: 40},
@@ -369,7 +374,7 @@ var svg = d3.select("#chart").append("svg")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
             </code></pre>
         </div>
-        <div class="col2">
+        <div class="col2 fragment">
             <pre><code data-trim>
 var ChartBase = Backbone.View.extend({
 
@@ -401,6 +406,7 @@ var ChartBase = Backbone.View.extend({
                 <li>container element and dimensions are now options</li>
                 <li>configurable margins</li>
                 <li>global variables as object properties</li>
+                <li>the implementation still looks like familiar D3</li>
             </ul>
         </aside>
     </section>
