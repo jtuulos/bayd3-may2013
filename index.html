@@ -411,6 +411,63 @@ var ChartBase = Backbone.View.extend({
         </aside>
     </section>
 
+    <section>
+        <h3>Base chart interface</h3>
+        <div class="col2">
+            <pre><code data-trim>
+var ChartBase = Backbone.View.extend({
+
+  defaults: {
+    xAttr: "x",
+    yAttr: "y",
+    margin: {...}
+  },
+
+  render: function() {
+    ... // Append SVG element, set margins
+
+    this.scales = {
+        x: this.getXScale(),
+        y: this.getYScale()
+    };
+    this.renderAxes();
+    this.renderData();
+
+    return this;
+  }
+
+});
+            </code></pre>
+        </div>
+        <div class="col2 fragment">
+            <p class="small">Usage:</p>
+            <pre class="language-javascript"><code data-trim>
+// Create chart object (BarChart inherits ChartBase)
+var chart = new BarChart({
+
+  // Basic Backbone view options
+  el: $("#chart-container"),
+  collection: new Backbone.Collection(json),
+
+  // Override default options to match data
+  // (use default margins)
+  xAttr: "letter",
+  yAttr: "frequency"
+
+});
+
+// Sets margins, gets scales, renders data
+chart.render();
+            </code></pre>
+        </div>
+
+        <aside class="notes">
+            <ul>
+                <li></li>
+            </ul>
+        </aside>
+    </section>
+
 </div></div>
 
 <script src="lib/js/head.min.js"></script>
