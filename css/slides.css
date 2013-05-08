@@ -1,0 +1,39 @@
+.reveal h2 {
+    margin-bottom: 45px;
+}
+
+.reveal [class^="icon-"],
+.reveal [class*=" icon-"] {
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style:normal;
+}
+
+.reveal .col2 {
+    float: left;
+    width: 46%;
+    margin: 0 2%;
+}
+
+.reveal .mock-div {
+    background: rgba(0,64,128,0.15);
+    min-height: 20px;
+    padding: 8px 20px;
+    margin: 0 0 5px;
+
+    font-size: 22px;
+    text-align: left;
+
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.reveal .mock-div.svg {
+    padding: 0;
+}
+
+.reveal .mock-div.dynamic {
+    background: rgba(255,64,0,0.6);
+    color: white;
+}

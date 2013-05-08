@@ -14,8 +14,10 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
+    <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/reveal.min.css">
     <link rel="stylesheet" href="css/theme/sky.css" id="theme">
+    <link rel="stylesheet" href="css/slides.css">
 
     <!-- For syntax highlighting -->
     <link rel="stylesheet" href="lib/css/idea.css">
@@ -32,23 +34,81 @@
 
 <body>
 
-<div class="reveal">
+<div class="reveal"><div class="slides">
 
-    <div class="slides">
-        <section>
-            <h2>D3 + Backbone<br>=<br>Reusable Charts</h2>
-        </section>
+    <section>
+        <h2>D3 + Backbone<br>=<br>Reusable Charts</h2><br>
+        <p><a href="http://twitter.com/jtuulos" target="_blank">@jtuulos</a></p>
+        <p><small>May 9, 2013</small></p>
+    </section>
 
-        <section>
-            <h2>Title</h2>
-            <pre><code data-trim>
-var foo = {"asd": "bob"};
-            </code></pre>
-            <p>foofoo</p>
-        </section>
-    </div>
+    <section>
+        <h2>Why reusable charts?</h2>
+        <p><i class="icon-link"></i> Modularity</p>
+        <p><i class="icon-list"></i> Code structure</p>
+        <p><i class="icon-wrench"></i> Maintenance</p>
+        <p><i class="icon-github"></i> Collaboration</p>
+    </section>
 
-</div>
+    <section>
+        <h2>Why D3 + Backbone?</h2>
+        <div class="col2">
+            <h4>D3 + Server-side framework</h4>
+            <div class="mock-div">
+                <div class="mock-div">Header</div>
+                <div class="mock-div">
+                    <p>List</p>
+                    <div class="mock-div">
+                        <p>Item</p>
+                        <div class="mock-div svg">
+                            <div class="mock-div dynamic fragment" data-fragment-id="1">
+                                <strong><i class="icon-bar-chart"></i> D3 chart</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mock-div">
+                        <p>Item</p>
+                        <div class="mock-div svg">
+                            <div class="mock-div dynamic fragment" data-fragment-id="1">
+                                <strong><i class="icon-bar-chart"></i> D3 chart</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col2">
+            <h4>D3 + Client-side framework</h4>
+            <div class="mock-div">
+                <div class="mock-div">Header</div>
+                <div class="mock-div dynamic fragment" data-fragment-id="2">
+                    <p>ListView</p>
+                    <div class="mock-div dynamic fragment" data-fragment-id="3">
+                        <p>ItemView</p>
+                        <div class="mock-div dynamic fragment" data-fragment-id="4">
+                            <strong><i class="icon-bar-chart"></i> D3 chart</strong>
+                        </div>
+                    </div>
+                    <div class="mock-div dynamic fragment" data-fragment-id="3">
+                        <p>ItemView</p>
+                        <div class="mock-div dynamic fragment" data-fragment-id="4">
+                            <strong><i class="icon-bar-chart"></i> D3 chart</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <aside class="notes">
+            <ul>
+                <li>client-side: svg elements don't exist initially</li>
+                <li>there's already a hierarchy of views, why not have D3 views?</li>
+                <li>rendering optimizations, real-time charts</li>
+            </ul>
+        </aside>
+    </section>
+
+</div></div>
 
 <script src="lib/js/head.min.js"></script>
 <script src="js/reveal.min.js"></script>
