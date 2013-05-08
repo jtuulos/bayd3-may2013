@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Quicksand:400,700,400italic,700italic);
+@import url(http://fonts.googleapis.com/css?family=Bree+Serif);
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700);
 /**
  * Sky theme for reveal.js.
@@ -41,10 +41,9 @@ body {
 .reveal h6 {
   margin: 0 0 20px 0;
   color: #333333;
-  font-family: "Quicksand", sans-serif;
+  font-family: "Bree Serif", sans-serif;
   line-height: 0.9em;
-  letter-spacing: -0.08em;
-  text-transform: uppercase;
+  letter-spacing: -0.02em;
   text-shadow: none; }
 
 .reveal h1 {
