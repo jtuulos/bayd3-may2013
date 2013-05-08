@@ -1,51 +1,81 @@
 <!doctype html>
-<html>
-  <head>
+<html lang="en">
+
+<head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>bayd3-may2013 by jtuulos</title>
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>D3 + Backbone = Reusable Charts</title>
+
+    <meta name="description" content="Building reusable charts with D3.js and Backbone.js">
+    <meta name="author" content="Jyri Tuulos">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/sky.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/idea.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+        document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
     <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="lib/js/html5shiv.js"></script>
     <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>bayd3-may2013</h1>
-        <p>Slides from Bay Area D3 User Group meetup on May 9, 2013</p>
+</head>
 
-        <p class="view"><a href="https://github.com/jtuulos/bayd3-may2013">View the Project on GitHub <small>jtuulos/bayd3-may2013</small></a></p>
+<body>
 
+<div class="reveal">
 
-        <ul>
-          <li><a href="https://github.com/jtuulos/bayd3-may2013/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/jtuulos/bayd3-may2013/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/jtuulos/bayd3-may2013">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <p>Slides from <a href="http://www.meetup.com/Bay-Area-d3-User-Group/events/116404202/">Bay Area D3 User Group meetup on May 9, 2013</a></p>
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/jtuulos">jtuulos</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
+    <div class="slides">
+        <section>
+            <h2>D3 + Backbone<br>=<br>Reusable Charts</h2>
+        </section>
+
+        <section>
+            <h2>Title</h2>
+            <pre><code data-trim>
+var foo = {"asd": "bob"};
+            </code></pre>
+            <p>foofoo</p>
+        </section>
     </div>
-    <script src="javascripts/scale.fix.js"></script>
-              <script type="text/javascript">
-            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-          </script>
-          <script type="text/javascript">
-            try {
-              var pageTracker = _gat._getTracker("UA-40738908-1");
-            pageTracker._trackPageview();
-            } catch(err) {}
-          </script>
 
-  </body>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+
+<script>
+
+Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+
+    width: 1140,
+    height: 620,
+
+    theme: 'sky',
+    transition: 'linear',
+
+    dependencies: [
+        { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+        { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+        { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+        { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+    ]
+});
+
+</script>
+
+</body>
 </html>
