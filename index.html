@@ -354,6 +354,57 @@ var yAxis = d3.svg.axis()
         </aside>
     </section>
 
+    <section>
+        <h3>Wrapping D3 in Backbone</h3>
+        <div class="col2">
+            <pre><code data-trim>
+var margin = {top: 20, right: 20, bottom: 30, left: 40},
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+var svg = d3.select("#chart").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+            </code></pre>
+        </div>
+        <div class="col2">
+            <pre><code data-trim>
+var ChartBase = Backbone.View.extend({
+
+  // Default options
+  defaults: {
+    margin: {top: 20, right: 20, bottom: 30, left: 40}
+  },
+
+  render: function() {
+    var margin = this.options.margin;
+    this.width = this.$el.width() - margin.left - margin.right;
+    this.height = this.$el.height() - margin.top - margin.bottom;
+
+    this.svg = d3.select(this.el).append("svg")
+        .attr("width", this.width + margin.left + margin.right)
+        .attr("height", this.height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    return this;
+  }
+
+});
+            </code></pre>
+        </div>
+
+        <aside class="notes">
+            <ul>
+                <li>container element and dimensions are now options</li>
+                <li>configurable margins</li>
+                <li>global variables as object properties</li>
+            </ul>
+        </aside>
+    </section>
+
 </div></div>
 
 <script src="lib/js/head.min.js"></script>
