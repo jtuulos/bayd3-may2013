@@ -28,6 +28,10 @@
     margin: 0 2%;
 }
 
+.reveal .col2 pre {
+    width: 100%;
+}
+
 .reveal .mock-div {
     background: rgba(0,64,128,0.15);
     min-height: 20px;

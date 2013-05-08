@@ -46,10 +46,20 @@
 
     <section>
         <h2>Why reusable charts?</h2>
+        <p><i class="icon-eye-close"></i> Abstraction</p>
         <p><i class="icon-link"></i> Modularity</p>
-        <p><i class="icon-list"></i> Code structure</p>
         <p><i class="icon-wrench"></i> Maintenance</p>
         <p><i class="icon-github"></i> Collaboration</p>
+
+        <aside class="notes">
+            <ul>
+                <li>abstract away the D3</li>
+                <li>D3 is hard for JavaScript beginners</li>
+                <li>code structure is a must in large apps</li>
+                <li>separating logic from data schema</li>
+                <li>open sourcing parts of apps (e.g. Bootstrap)</li>
+            </ul>
+        </aside>
     </section>
 
     <section>
@@ -125,6 +135,54 @@
                 <li>build your own framework -> YMMV</li>
             </ul>
         </aside>
+    </section>
+
+    <section>
+        <section>
+            <h2>Goal: Spreadsheet charts</h2>
+            <img src="img/spreadsheet_chart.png">
+        </section>
+        <section>
+            <h2>Goal: JSON + Backbone + D3</h2>
+            <div class="col2">
+                <pre><code data-trim>
+var json = [
+  {"letter": "A", "frequency": 0.08167},
+  {"letter": "B", "frequency": 0.01492},
+  {"letter": "C", "frequency": 0.02780},
+  {"letter": "D", "frequency": 0.04253},
+  {"letter": "E", "frequency": 0.12702},
+  {"letter": "F", "frequency": 0.02288},
+  {"letter": "G", "frequency": 0.02022},
+  {"letter": "H", "frequency": 0.06094},
+  {"letter": "I", "frequency": 0.06973},
+  {"letter": "J", "frequency": 0.00153},
+  {"letter": "K", "frequency": 0.00747},
+  {"letter": "L", "frequency": 0.04025},
+  ...
+];
+                </code></pre>
+            </div>
+            <div class="col2">
+                <pre><code data-trim>
+// Custom view (inherits Backbone.View)
+var chart = new BarChart({
+
+  // Basic Backbone view options
+  el: $("#chart-container"),
+  collection: new Backbone.Collection(json),
+
+  // Custom chart options
+  xAttr: "letter",
+  yAttr: "frequency"
+
+});
+
+// D3 code abstracted away
+chart.render();
+                </code></pre>
+            </div>
+        </section>
     </section>
 
 </div></div>
