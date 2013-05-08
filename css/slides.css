@@ -1,7 +1,11 @@
 @import url(http://fonts.googleapis.com/css?family=Inconsolata:400,700);
 
-.reveal code {
+.reveal code, .reveal pre {
     font-family: "Inconsolata", monospace;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+    line-height: 1em;
 }
 
 .reveal h2 {
@@ -67,3 +71,40 @@
     background: rgba(255,64,0,0.55);
     color: white;
 }
+
+
+.reveal code.full-height,
+.reveal pre.minimap {
+    max-height: 580px;
+    overflow: auto;
+}
+
+.reveal pre.minimap {
+    font-size: 8px;
+    background: white;
+    padding: 5px;
+}
+
+.reveal pre.minimap .section {
+    display: block;
+    position: relative;
+    background: rgba(0,0,0,0.5);
+}
+
+.reveal pre.minimap .section .label {
+    color: white;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    font-size: 28px;
+    line-height: 28px;
+    margin-top: -14px;
+    font-family: "Open Sans", sans-serif;
+    text-shadow: 0 1px 5px rgba(0,0,0,0.8);
+}
+
+.reveal pre.minimap .section.margins { background: rgba(52, 73, 94, 0.8); }
+.reveal pre.minimap .section.scales  { background: rgba(142, 68, 173, 0.8); }
+.reveal pre.minimap .section.axes    { background: rgba(6, 164, 73, 0.8); }
+.reveal pre.minimap .section.data    { background: rgba(192, 57, 43, 0.8); }
+.reveal pre.minimap .section.bars    { background: rgba(230, 126, 34, 0.8); }
