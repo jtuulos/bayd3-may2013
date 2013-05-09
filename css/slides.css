@@ -13,6 +13,14 @@
     max-height: 460px;
 }
 
+.reveal pre.d3 {
+    border: 3px solid #f58019;
+}
+
+.reveal pre.backbone {
+    border: 3px solid #0071b5;
+}
+
 .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
     line-height: 1em;
 }
@@ -74,6 +82,12 @@
 }
 .reveal .legend-client {
     color: rgba(255,64,0,1);
+}
+.reveal .legend-d3 {
+    color: #d56000;
+}
+.reveal .legend-backbone {
+    color: #005195;
 }
 
 .reveal .mock-div.client-side {

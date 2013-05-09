@@ -143,7 +143,7 @@
             <img src="img/spreadsheet_chart.png">
         </section>
         <section>
-            <h3>Goal: JSON + Backbone + D3</h3>
+            <h3>Goal: JSON + <span class="legend-backbone">Backbone</span> + <span class="legend-d3">D3</span></h3>
             <div class="col2">
                 <pre><code data-trim>
 var json = [
@@ -164,7 +164,7 @@ var json = [
                 </code></pre>
             </div>
             <div class="col2">
-                <pre><code data-trim>
+                <pre class="backbone"><code data-trim>
 // Custom view (inherits Backbone.View)
 var chart = new BarChart({
 
@@ -186,14 +186,14 @@ chart.render();
     </section>
 
     <section>
-        <h3>Example: D3 bar chart</h3>
+        <h3>Example: <span class="legend-d3">D3</span> bar chart</h3>
         <iframe src="http://bl.ocks.org/mbostock/raw/3885304/adf6163abdd2bb12a5e776594a01ea668f757cdd/" marginwidth="0" marginheight="0" scrolling="no" width="960" height="500"></iframe>
         <p class="small"><a href="http://bl.ocks.org/mbostock/3885304" target="_blank">by <strong>Mike Bostock</strong></a></p>
     </section>
 
     <section>
         <div class="col2">
-            <pre><code class="full-height" data-trim>
+            <pre class="d3"><code class="full-height" data-trim>
 // http://bl.ocks.org/mbostock/3885304
 
 var margin = {top: 20, right: 20, bottom: 30, left: 40},
@@ -260,7 +260,7 @@ d3.tsv("data.tsv", function(error, data) {
             </code></pre>
         </div>
         <div class="col2 fragment" data-fragment-index="1">
-            <pre class="minimap">
+            <pre class="minimap d3">
 <span class="section margins">var margin = {top: 20, right: 20, bottom: 30, left: 40},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
@@ -336,7 +336,7 @@ var yAxis = d3.svg.axis()
     </section>
 
     <section>
-        <h2>D3 is declarative,<br>MV* is object-oriented</h2>
+        <h2><span class="legend-d3">D3</span> is declarative,<br><span class="legend-backbone">MV*</span> is object-oriented</h2>
         <p class="fragment">
             <strong><i class="icon-arrow-right"></i> Encapsulation</strong>
         </p>
@@ -362,7 +362,7 @@ var yAxis = d3.svg.axis()
     <section>
         <h3>Dimensions and margin convention</h3>
         <div class="col2">
-            <pre><code data-trim>
+            <pre class="d3"><code data-trim>
 var margin = {top: 20, right: 20, bottom: 30, left: 40},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
@@ -375,7 +375,7 @@ var svg = d3.select("#chart").append("svg")
             </code></pre>
         </div>
         <div class="col2 fragment">
-            <pre><code data-trim>
+            <pre class="backbone"><code data-trim>
 var ChartBase = Backbone.View.extend({
 
   // Default options
@@ -414,7 +414,7 @@ var ChartBase = Backbone.View.extend({
     <section>
         <h3>Base chart interface</h3>
         <div class="col2">
-            <pre><code data-trim>
+            <pre class="backbone"><code data-trim>
 var ChartBase = Backbone.View.extend({
 
   defaults: {
@@ -441,7 +441,7 @@ var ChartBase = Backbone.View.extend({
         </div>
         <div class="col2 fragment">
             <p class="small">Usage:</p>
-            <pre class="language-javascript"><code data-trim>
+            <pre class="backbone language-javascript"><code data-trim>
 // Create chart object (BarChart inherits ChartBase)
 var chart = new BarChart({
 
@@ -471,7 +471,7 @@ chart.render();
     <section>
         <h3>Bar chart: Scales</h3>
         <div class="col2">
-            <pre><code data-trim>
+            <pre class="d3"><code data-trim>
 var x = d3.scale.ordinal()
     .rangeRoundBands([0, width], .1);
 
@@ -485,7 +485,7 @@ y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
             </code></pre>
         </div>
         <div class="col2 fragment">
-            <pre><code data-trim>
+            <pre class="backbone"><code data-trim>
 var BarChart = ChartBase.extend({
 
   defaults: _.defaults({
@@ -513,7 +513,7 @@ var BarChart = ChartBase.extend({
     <section>
         <h3>Bar chart: Axes</h3>
         <div class="col2">
-            <pre><code data-trim>
+            <pre class="d3"><code data-trim>
 var xAxis = d3.svg.axis()
     .scale(x)
     .orient("bottom");
@@ -536,7 +536,7 @@ svg.append("g")
             </code></pre>
         </div>
         <div class="col2 fragment">
-            <pre><code data-trim>
+            <pre class="backbone"><code data-trim>
 var BarChart = ChartBase.extend({
 
   renderAxes: function() {
@@ -567,7 +567,7 @@ var BarChart = ChartBase.extend({
     <section>
         <h3>Bar chart: Rendering data</h3>
         <div class="col2">
-            <pre><code data-trim>
+            <pre class="d3"><code data-trim>
 svg.selectAll(".bar")
     .data(data)
   .enter().append("rect")
@@ -579,7 +579,7 @@ svg.selectAll(".bar")
             </code></pre>
         </div>
         <div class="col2 fragment">
-            <pre><code data-trim>
+            <pre class="backbone"><code data-trim>
 var BarChart = ChartBase.extend({
 
   renderData: function() {
