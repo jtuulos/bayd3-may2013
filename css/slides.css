@@ -53,6 +53,14 @@
     font-style:normal;
 }
 
+.reveal .jumbo-icon {
+    margin: 10px 0 20px;
+    color: #3b759e;
+    display: block;
+    font-size: 3em;
+    line-height: 1.2em;
+}
+
 .reveal .col2 {
     float: left;
     width: 47.9%;
@@ -61,6 +69,12 @@
 
 .reveal .col2 pre {
     width: 100%;
+}
+
+.reveal .col4 {
+    float: left;
+    width: 22.9%;
+    margin: 0 1%;
 }
 
 .reveal .mock-div {
