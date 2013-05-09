@@ -564,6 +564,44 @@ var BarChart = ChartBase.extend({
         </div>
     </section>
 
+    <section>
+        <h3>Bar chart: Rendering data</h3>
+        <div class="col2">
+            <pre><code data-trim>
+svg.selectAll(".bar")
+    .data(data)
+  .enter().append("rect")
+    .attr("class", "bar")
+    .attr("x", function(d) { return x(d.letter); })
+    .attr("width", x.rangeBand())
+    .attr("y", function(d) { return y(d.frequency); })
+    .attr("height", function(d) { return height - y(d.frequency); });
+            </code></pre>
+        </div>
+        <div class="col2 fragment">
+            <pre><code data-trim>
+var BarChart = ChartBase.extend({
+
+  renderData: function() {
+    var chart = this,
+        x = this.scales.x,
+        y = this.scales.y;
+
+    this.svg.selectAll(".bar")
+        .data(this.mapData()) // { x: xAttr, y: yAttr }
+      .enter().append("rect")
+        .attr("class", "bar")
+        .attr("x", function(d) { return x(d.x); })
+        .attr("width", x.rangeBand())
+        .attr("y", function(d) { return y(d.y); })
+        .attr("height", function(d) { return chart.height - y(d.y); });
+  }
+
+});
+            </code></pre>
+        </div>
+    </section>
+
 </div></div>
 
 <script src="lib/js/head.min.js"></script>
