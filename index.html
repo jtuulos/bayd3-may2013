@@ -468,6 +468,102 @@ chart.render();
         </aside>
     </section>
 
+    <section>
+        <h3>Bar chart: Scales</h3>
+        <div class="col2">
+            <pre><code data-trim>
+var x = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1);
+
+var y = d3.scale.linear()
+    .range([height, 0]);
+
+...
+
+x.domain(data.map(function(d) { return d.letter; }));
+y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
+            </code></pre>
+        </div>
+        <div class="col2 fragment">
+            <pre><code data-trim>
+var BarChart = ChartBase.extend({
+
+  defaults: _.defaults({
+    barPadding: 0.1
+  }, ChartBase.prototype.defaults),
+
+  getXScale: function() {
+    var padding = this.options.barPadding;
+    return d3.scale.ordinal()
+      .rangeRoundBands([0, this.width], padding)
+      .domain(this.collection.pluck(this.options.xAttr));
+  },
+
+  getYScale: function() {
+    return d3.scale.linear()
+      .rangeRound([this.height, 0])
+      .domain([0, d3.max(this.collection.pluck(this.options.yAttr))]);
+  }
+
+});
+            </code></pre>
+        </div>
+    </section>
+
+    <section>
+        <h3>Bar chart: Axes</h3>
+        <div class="col2">
+            <pre><code data-trim>
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .tickFormat(d3.format(".0%"));
+
+...
+
+svg.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(xAxis);
+
+svg.append("g")
+    .attr("class", "y axis")
+    .call(yAxis);
+            </code></pre>
+        </div>
+        <div class="col2 fragment">
+            <pre><code data-trim>
+var BarChart = ChartBase.extend({
+
+  renderAxes: function() {
+    var xAxis = d3.svg.axis()
+      .scale(this.scales.x)
+      .orient("bottom");
+
+    var yAxis = d3.svg.axis()
+      .scale(this.scales.y)
+      .orient("left")
+      .tickFormat(d3.format(".0%"));
+
+    this.svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + this.height + ")")
+      .call(xAxis);
+
+    this.svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis);
+  }
+
+});
+            </code></pre>
+        </div>
+    </section>
+
 </div></div>
 
 <script src="lib/js/head.min.js"></script>
