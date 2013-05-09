@@ -134,7 +134,7 @@
     </section>
 
     <section>
-        <h2><img src="img/backbone.png" alt="Backbone.js" class="logo" style="width:450px;"></h2>
+        <h2><img src="img/backbone.png" alt="Backbone.js" class="logo" style="width:600px;"></h2>
         <p class="fragment">Helpful methods to <strong>manipulate and query your data</strong></p>
         <p class="fragment">"Backbone is a library, not a framework"</p>
         <div class="fragment">
@@ -159,6 +159,7 @@
 
             <aside class="notes">
                 <ul>
+                    <li>the end user point of view (app developers)</li>
                     <li>pick (a subset of) data, provide options, chart will be rendered</li>
                 </ul>
             </aside>
@@ -208,7 +209,8 @@ chart.render();
                 <ul>
                     <li>Backbone Collection contains master data</li>
                     <li>only a subset will be passed to D3</li>
-                    <li>every visualization can use the same collection</li>
+                    <li>sensible defaults, just add data</li>
+                    <li>the same state that is used by the app itself</li>
                     <li>attaching listeners to properties</li>
                 </ul>
             </aside>
@@ -359,8 +361,9 @@ var yAxis = d3.svg.axis()
         <aside class="notes">
             <ul>
                 <li>"canonical" code</li>
-                <li>not bad code in itself, good as a simple example</li>
+                <li>not bad code in itself, good as a self-contained example</li>
                 <li>some parts could be reused for other charts</li>
+                <li>"Towards Reusable Charts", the Mike Bostock approach</li>
             </ul>
         </aside>
     </section>
@@ -387,6 +390,13 @@ var yAxis = d3.svg.axis()
     <section>
         <h2>Let's wrap D3 in Backbone</h2>
         <img src="img/bacon-asparagus.jpg">
+
+        <aside class="notes">
+            <ul>
+                <li>for some, it's just ruining perfectly good veggies</li>
+                <li>some prefer to have bacon everywhere</li>
+            </ul>
+        </aside>
     </section>
 
     <section>
@@ -436,7 +446,7 @@ var ChartBase = Backbone.View.extend({
                 <li>container element and dimensions are now options</li>
                 <li>configurable margins</li>
                 <li>global variables as object properties</li>
-                <li>the implementation still looks like familiar D3</li>
+                <li>the inner implementation still looks like familiar D3</li>
             </ul>
         </aside>
     </section>
@@ -490,12 +500,6 @@ var chart = new BarChart({
 chart.render();
             </code></pre>
         </div>
-
-        <aside class="notes">
-            <ul>
-                <li></li>
-            </ul>
-        </aside>
     </section>
 
     <section>
@@ -678,7 +682,7 @@ chart.render();
         </p>
         <p>
             <a href="http://backbonejs.org" target="_blank">backbonejs.org</a>,
-            <a href="https://github.com/tbranyen/backbone-boilerplate" target="_blank">Backbone Boilerplate</a>
+            <a href="https://github.com/tbranyen/backbone-boilerplate" target="_blank">tbranyen/backbone-boilerplate</a>
         </p>
         <br>
         <h4>Alternate approaches</h4>
