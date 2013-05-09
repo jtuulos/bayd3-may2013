@@ -95,12 +95,6 @@
     padding: 0;
 }
 
-.reveal .legend-server {
-    color: rgba(0,64,128,1);
-}
-.reveal .legend-client {
-    color: rgba(255,64,0,1);
-}
 .reveal .legend-d3 {
     color: #d56000;
 }

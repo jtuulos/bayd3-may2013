@@ -65,10 +65,11 @@
 
         <aside class="notes">
             <ul>
+                <li>separating logic from data schema</li>
                 <li>abstract away the D3</li>
                 <li>D3 is hard for JavaScript beginners</li>
-                <li>code structure is a must in large apps</li>
-                <li>separating logic from data schema</li>
+                <li>well structured code is a must in large apps</li>
+                <li>testability</li>
                 <li>open sourcing parts of apps (e.g. Bootstrap)</li>
             </ul>
         </aside>
@@ -76,9 +77,9 @@
 
     <section>
         <h2>Web frameworks &amp; D3</h2>
-        <div class="col2 fragment" data-fragment-index="0">
-            <h4><span class="legend-server">Server-side</span> framework + <span class="legend-client">D3</span></h4>
-            <div class="mock-div">
+        <div class="col2">
+            <h4>Server-side framework + <span class="legend-d3">D3</span></h4>
+            <div class="mock-div fragment" data-fragment-index="0">
                 <div class="mock-div">Header</div>
                 <div class="mock-div">
                     <p>List</p>
@@ -101,9 +102,9 @@
                 </div>
             </div>
         </div>
-        <div class="col2 fragment" data-fragment-index="2">
-            <h4><span class="legend-client">Client-side</span> framework + <span class="legend-client">D3</span></h4>
-            <div class="mock-div">
+        <div class="col2">
+            <h4>Client-side framework + <span class="legend-d3">D3</span></h4>
+            <div class="mock-div fragment" data-fragment-index="2">
                 <div class="mock-div">Header</div>
                 <div class="mock-div client-side fragment" data-fragment-index="3">
                     <p>ListView</p>
@@ -133,11 +134,13 @@
     </section>
 
     <section>
-        <h2><img src="img/backbone.png" alt="Backbone.js" class="logo" width="450"></h2>
-        <p>Helpful methods to <strong>manipulate and query your data</strong></p>
-        <p>"Backbone is a library, not a framework"</p>
-        <p><strong>Plays well with others</strong></p>
-        <p class="small">(from the <a href="http://backbonejs.org/#FAQ-why-backbone" target="_blank">official FAQ</a>)</p>
+        <h2><img src="img/backbone.png" alt="Backbone.js" class="logo" style="width:450px;"></h2>
+        <p class="fragment">Helpful methods to <strong>manipulate and query your data</strong></p>
+        <p class="fragment">"Backbone is a library, not a framework"</p>
+        <div class="fragment">
+            <p><strong>Plays well with others</strong></p>
+            <p class="small">(from the <a href="http://backbonejs.org/#FAQ-why-backbone" target="_blank">official FAQ</a>)</p>
+        </div>
 
         <aside class="notes">
             <ul>
@@ -153,38 +156,44 @@
         <section>
             <h3>Goal: Spreadsheet charts</h3>
             <img src="img/spreadsheet_chart.png">
+
+            <aside class="notes">
+                <ul>
+                    <li>pick (a subset of) data, provide options, chart will be rendered</li>
+                </ul>
+            </aside>
         </section>
         <section>
             <h3>Goal: JSON + <span class="legend-backbone">Backbone</span> + <span class="legend-d3">D3</span></h3>
             <div class="col2">
-                <pre><code data-trim>
+                <pre class="language-javascript"><code data-trim>
 var json = [
-  {"letter": "A", "frequency": 0.08167},
-  {"letter": "B", "frequency": 0.01492},
-  {"letter": "C", "frequency": 0.02780},
-  {"letter": "D", "frequency": 0.04253},
-  {"letter": "E", "frequency": 0.12702},
-  {"letter": "F", "frequency": 0.02288},
-  {"letter": "G", "frequency": 0.02022},
-  {"letter": "H", "frequency": 0.06094},
-  {"letter": "I", "frequency": 0.06973},
-  {"letter": "J", "frequency": 0.00153},
-  {"letter": "K", "frequency": 0.00747},
-  {"letter": "L", "frequency": 0.04025},
+  {"letter": "A", "frequency": 0.08167, ... },
+  {"letter": "B", "frequency": 0.01492, ... },
+  {"letter": "C", "frequency": 0.02780, ... },
+  {"letter": "D", "frequency": 0.04253, ... },
+  {"letter": "E", "frequency": 0.12702, ... },
+  {"letter": "F", "frequency": 0.02288, ... },
+  {"letter": "G", "frequency": 0.02022, ... },
+  {"letter": "H", "frequency": 0.06094, ... },
+  {"letter": "I", "frequency": 0.06973, ... },
+  {"letter": "J", "frequency": 0.00153, ... },
+  {"letter": "K", "frequency": 0.00747, ... },
+  {"letter": "L", "frequency": 0.04025, ... },
   ...
 ];
                 </code></pre>
             </div>
             <div class="col2">
-                <pre class="backbone"><code data-trim>
+                <pre class="backbone language-javascript"><code data-trim>
 // Custom view (inherits Backbone.View)
 var chart = new BarChart({
 
   // Basic Backbone view options
-  el: $("#chart-container"),
+  el: "#chart-container",
   collection: new Backbone.Collection(json),
 
-  // Custom chart options
+  // The properties to use for rendering
   xAttr: "letter",
   yAttr: "frequency"
 
@@ -194,6 +203,15 @@ var chart = new BarChart({
 chart.render();
                 </code></pre>
             </div>
+
+            <aside class="notes">
+                <ul>
+                    <li>Backbone Collection contains master data</li>
+                    <li>only a subset will be passed to D3</li>
+                    <li>every visualization can use the same collection</li>
+                    <li>attaching listeners to properties</li>
+                </ul>
+            </aside>
         </section>
     </section>
 
@@ -205,7 +223,7 @@ chart.render();
 
     <section>
         <div class="col2">
-            <pre class="d3"><code class="full-height" data-trim>
+            <pre class="d3 language-javascript"><code class="full-height" data-trim>
 // http://bl.ocks.org/mbostock/3885304
 
 var margin = {top: 20, right: 20, bottom: 30, left: 40},
@@ -374,7 +392,7 @@ var yAxis = d3.svg.axis()
     <section>
         <h3>Dimensions and margin convention</h3>
         <div class="col2">
-            <pre class="d3"><code data-trim>
+            <pre class="d3 language-javascript"><code data-trim>
 var margin = {top: 20, right: 20, bottom: 30, left: 40},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
@@ -387,7 +405,7 @@ var svg = d3.select("#chart").append("svg")
             </code></pre>
         </div>
         <div class="col2 fragment">
-            <pre class="backbone"><code data-trim>
+            <pre class="backbone language-javascript"><code data-trim>
 var ChartBase = Backbone.View.extend({
 
   // Default options
@@ -426,7 +444,7 @@ var ChartBase = Backbone.View.extend({
     <section>
         <h3>Base chart interface</h3>
         <div class="col2">
-            <pre class="backbone"><code data-trim>
+            <pre class="backbone language-javascript"><code data-trim>
 var ChartBase = Backbone.View.extend({
 
   defaults: {
@@ -458,7 +476,7 @@ var ChartBase = Backbone.View.extend({
 var chart = new BarChart({
 
   // Basic Backbone view options
-  el: $("#chart-container"),
+  el: "#chart-container",
   collection: new Backbone.Collection(json),
 
   // Override default options to match data
@@ -483,7 +501,7 @@ chart.render();
     <section>
         <h3>Bar chart: Scales</h3>
         <div class="col2">
-            <pre class="d3"><code data-trim>
+            <pre class="d3 language-javascript"><code data-trim>
 var x = d3.scale.ordinal()
     .rangeRoundBands([0, width], .1);
 
@@ -497,7 +515,7 @@ y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
             </code></pre>
         </div>
         <div class="col2 fragment">
-            <pre class="backbone"><code data-trim>
+            <pre class="backbone language-javascript"><code data-trim>
 var BarChart = ChartBase.extend({
 
   defaults: _.defaults({
@@ -525,7 +543,7 @@ var BarChart = ChartBase.extend({
     <section>
         <h3>Bar chart: Axes</h3>
         <div class="col2">
-            <pre class="d3"><code data-trim>
+            <pre class="d3 language-javascript"><code data-trim>
 var xAxis = d3.svg.axis()
     .scale(x)
     .orient("bottom");
@@ -548,7 +566,7 @@ svg.append("g")
             </code></pre>
         </div>
         <div class="col2 fragment">
-            <pre class="backbone"><code data-trim>
+            <pre class="backbone language-javascript"><code data-trim>
 var BarChart = ChartBase.extend({
 
   renderAxes: function() {
@@ -579,7 +597,7 @@ var BarChart = ChartBase.extend({
     <section>
         <h3>Bar chart: Rendering data</h3>
         <div class="col2">
-            <pre class="d3"><code data-trim>
+            <pre class="d3 language-javascript"><code data-trim>
 svg.selectAll(".bar")
     .data(data)
   .enter().append("rect")
@@ -591,7 +609,7 @@ svg.selectAll(".bar")
             </code></pre>
         </div>
         <div class="col2 fragment">
-            <pre class="backbone"><code data-trim>
+            <pre class="backbone language-javascript"><code data-trim>
 var BarChart = ChartBase.extend({
 
   renderData: function() {
@@ -620,7 +638,7 @@ var BarChart = ChartBase.extend({
             <pre class="backbone language-javascript"><code data-trim>
 var chart = new BarChart({
 
-  el: $("#chart-container"),
+  el: "#chart-container",
   collection: new Backbone.Collection(json),
 
   xAttr: "letter",
@@ -667,6 +685,14 @@ chart.render();
         <p class="small">
             <a href="http://bl.ocks.org/milroc/5522467" target="_blank">bl.ocks.org/milroc/5522467</a>
         </p>
+
+        <aside class="notes">
+            <ul>
+                <li>different approaches emerging</li>
+                <li>style and conventions differentiate libraries</li>
+                <li>different focuses w/r/t data and chart types</li>
+            </ul>
+        </aside>
     </section>
 
     <section>
