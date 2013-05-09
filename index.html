@@ -603,6 +603,28 @@ var BarChart = ChartBase.extend({
     </section>
 
     <section>
+        <h3>As basic as it gets</h3>
+        <div class="col2">
+            <pre class="backbone language-javascript"><code data-trim>
+var chart = new BarChart({
+
+  el: $("#chart-container"),
+  collection: new Backbone.Collection(json),
+
+  xAttr: "letter",
+  yAttr: "frequency"
+
+});
+
+chart.render();
+            </code></pre>
+        </div>
+        <div class="col2">
+            <img src="img/chart-result.png">
+        </div>
+    </section>
+
+    <section>
         <h2>But wait, there's more</h2>
         <p><a href="http://backbonejs.org/#Events-catalog" target="_blank">Re-rendering when data changes</a></p>
         <p><a href="http://backbonejs.org/#Sync" target="_blank">Using remote data <span class="small">(AJAX)</span></a></p>

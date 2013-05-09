@@ -37,7 +37,11 @@
     font-size: 75%;
 }
 
-.reveal img.logo {
+.reveal section img {
+    border: 3px solid #444;
+}
+
+.reveal section img.logo {
     border: none;
     box-shadow: none;
 }
